@@ -20,7 +20,6 @@ app.get('/api/health-check', (req, res, next) => {
 });
 
 app.get('/api/products', (req, res, next) => {
-
   const sql = `
   SELECT "productId",
           "name",
@@ -71,6 +70,70 @@ app.get('/api/cart', (req, res, next) => {
   if (!('cartId' in req.session)) {
     return res.status(200).json([]);
   }
+});
+
+app.post('/api/cart', (req, res, next) => {
+  const { productId } = req.body;
+  const value = [productId];
+  if (!Number(productId)) {
+    return next(new ClientError(`${productId} must be a positive integer`, 400));
+  }
+  const sql = `
+  SELECT "price"
+  FROM "products"
+  WHERE "productId" = $1
+  `;
+  db.query(sql, value)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(`productId ${productId} does not exist`, 400);
+      }
+      if (req.session.cartId) {
+        return {
+          cartId: req.session.cartId,
+          price: result.rows[0].price
+        };
+      } else {
+        const sql = `
+        insert into "carts" ("cartId", "createdAt")
+        values (default, default)
+        returning "cartId"
+        `;
+        return db.query(sql).then(cartId => ({
+          price: result.rows[0].price,
+          cartId: cartId.rows[0].cartId
+        }));
+      }
+    })
+    .then(data => {
+      req.session.cartId = data.cartId;
+      const price = data.price;
+      const sql = `
+        insert into "cartItems" ("cartId", "productId", "price")
+        values ($1, $2, $3)
+        returning "cartItemId"
+      `;
+      const values = [data.cartId, productId, price];
+      return db.query(sql, values).then(cartItemId => cartItemId.rows[0]);
+    })
+    .then(cartItemId => {
+      const sql = `
+      select "c"."cartItemId",
+        "c"."price",
+        "p"."productId",
+        "p"."image",
+        "p"."name",
+        "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1
+      `;
+      const value = [cartItemId.cartItemId];
+      return db.query(sql, value).then(data => {
+        res.status(201).json(data.rows[0]);
+      });
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {

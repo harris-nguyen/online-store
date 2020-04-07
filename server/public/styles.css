@@ -1,0 +1,27 @@
+.whiteFont {
+  color: white;
+}
+
+.black {
+  background-color: black;
+}
+
+.titleFont {
+  font-size: 100%;
+}
+
+img {
+  object-fit: contain;
+  height: 310px;
+  width: 100px
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.cardMargin {
+  margin: 3%;
+}

@@ -10,7 +10,8 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products/1')
+    const id = this.props.productID.productId;
+    fetch(`/api/products/${id}`)
       .then(response => {
         return response.json();
       })
@@ -30,7 +31,7 @@ export default class ProductDetails extends React.Component {
           <div
             className="fas fa-home text-muted"
             onClick={() =>
-              this.props.setView('catalog', { productId: this.props.productId })
+              this.props.setView('catalog', { productId: this.props.productID })
             }
           >
             Back to Catalog

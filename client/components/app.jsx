@@ -50,7 +50,7 @@ export default class App extends React.Component {
           </div>
 
           <div>
-            <ProductDetails setView={this.setView} product={view.params} />
+            <ProductDetails setView={this.setView} productID={view.params} />
           </div>
         </div>
       );

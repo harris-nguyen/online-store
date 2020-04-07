@@ -56,6 +56,27 @@ app.get('/api/products/:productId', (req, res, next) => {
     });
   }
 
+  app.get('/api/cart', (req, res, next) => {
+    if (!req.session.cartId) {
+      res.status(200).json([]);
+    }
+  });
+
+  app.post('/api/cart', (req, res, next) => {
+    // const { productId } = req.body;
+    // const value = [productId];
+
+    // if (!Number(productId)) {
+    //   return next(new ClientError(`${productId} must be a positive integer`, 400));
+    // }
+    // const sql = `
+    // SELECT "price"
+    // FROM "products"
+    // WHERE "productId" = $1
+    // `;
+
+  });
+
   db.query(sql, value)
     .then(result => {
       const data = result.rows[0];

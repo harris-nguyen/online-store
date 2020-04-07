@@ -5,6 +5,7 @@ export default class ProductItemList extends React.Component {
     return (
       <div className="text-center cardMargin">
         <div className="row">
+
           <div className="col">
             <div className="card">
               <img
@@ -25,5 +26,3 @@ export default class ProductItemList extends React.Component {
     );
   }
 }
-
-// className = "rounded w-75 p-3";

@@ -38,7 +38,36 @@ app.get('/api/products', (req, res, next) => {
         error: 'an unexpected error occurred with get'
       });
     });
+});
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const { productId } = req.params;
+  const value = [productId];
+
+  const sql = `
+    SELECT *
+    FROM "products"
+    WHERE "productId" = $1
+  `;
+
+  if (!Number(productId)) {
+    return res.status(400).json({
+      error: 'productId must be a positive intger'
+    });
+  }
+
+  db.query(sql, value)
+    .then(result => {
+      const data = result.rows[0];
+      if (!data) {
+        return res.status(400).json({
+          error: 'ID does not exist'
+        });
+      } else {
+        return res.status(200).json(data);
+      }
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {

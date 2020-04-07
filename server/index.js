@@ -19,6 +19,28 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/products', (req, res, next) => {
+
+  const sql = `
+  SELECT "productId",
+          "name",
+          "price",
+          "image",
+          "shortDescription"
+  FROM "products"
+`;
+  db.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(err => {
+      // eslint-disable-next-line no-console
+      console.log(err);
+      res.status(400).json({
+        error: 'an unexpected error occurred with get'
+      });
+    });
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

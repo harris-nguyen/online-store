@@ -43,40 +43,16 @@ app.get('/api/products', (req, res, next) => {
 app.get('/api/products/:productId', (req, res, next) => {
   const { productId } = req.params;
   const value = [productId];
-
   const sql = `
     SELECT *
     FROM "products"
     WHERE "productId" = $1
   `;
-
   if (!Number(productId)) {
     return res.status(400).json({
       error: 'productId must be a positive intger'
     });
   }
-
-  app.get('/api/cart', (req, res, next) => {
-    if (!req.session.cartId) {
-      res.status(200).json([]);
-    }
-  });
-
-  app.post('/api/cart', (req, res, next) => {
-    // const { productId } = req.body;
-    // const value = [productId];
-
-    // if (!Number(productId)) {
-    //   return next(new ClientError(`${productId} must be a positive integer`, 400));
-    // }
-    // const sql = `
-    // SELECT "price"
-    // FROM "products"
-    // WHERE "productId" = $1
-    // `;
-
-  });
-
   db.query(sql, value)
     .then(result => {
       const data = result.rows[0];
@@ -89,6 +65,12 @@ app.get('/api/products/:productId', (req, res, next) => {
       }
     })
     .catch(err => next(err));
+});
+
+app.get('/api/cart', (req, res, next) => {
+  if (!('cartId' in req.session)) {
+    return res.status(200).json([]);
+  }
 });
 
 app.use('/api', (req, res, next) => {

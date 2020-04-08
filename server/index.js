@@ -160,7 +160,7 @@ app.delete('/api/carts', (req, res, next) => {
   else if (cartItemId <= 0) throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400);
   const sql = `
   DELETE FROM "cartItems"
-  =WHERE "cartItemId" = $1 AND "cartId" = $2
+  WHERE "cartItemId" = $1 AND "cartId" = $2
   `;
   const value = [cartItemId, req.session.cartId];
   db.query(sql, value)

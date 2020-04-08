@@ -34,11 +34,11 @@ export default class ProductDetails extends React.Component {
               this.props.setView('catalog', { productId: this.props.productID })
             }
           >
-            Back to Catalog
+            {' '}Back to Catalog
           </div>
           <div>
-            <div className="row bgc">
-              <div className="col-6 oneProductFont">
+            <div className="row ">
+              <div className="col-6 ">
                 <img
                   src={data.image}
                   className="card-img-top"
@@ -50,7 +50,9 @@ export default class ProductDetails extends React.Component {
                 <div className="text-muted">
                   ${(data.price / 100).toFixed(2)}
                 </div>
-                <div className="oneProductFont ">{data.shortDescription}</div>
+                <div className="fontSizeTest">
+                  {data.shortDescription}
+                </div>
                 <button
                   onClick={() => this.props.addToCart(data)}
                   type="button"
@@ -59,7 +61,7 @@ export default class ProductDetails extends React.Component {
                   Add to Cart
                 </button>
               </div>
-              <div className=" textPadding oneProductFont m-3">
+              <div className="m-3">
                 {data.longDescription}
               </div>
             </div>

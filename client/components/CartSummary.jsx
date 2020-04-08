@@ -8,9 +8,10 @@ export default class CartSummary extends React.Component {
       <div className="container ">
         <div
           onClick={() => this.props.setView('catalog', {})}
-          className=" text-muted oneProductFont backCatalog "
+          className=" text-muted  fas fa-home  "
         >
-          go back
+          {' '}
+          Back to Catalog
         </div>
         <h3>My Shopping Cart</h3>
         <div>

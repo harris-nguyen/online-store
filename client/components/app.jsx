@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
+import CartSummary from './CartSummary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -48,12 +50,9 @@ export default class App extends React.Component {
       body: JSON.stringify(product)
     })
       .then(res => res.json())
-      .then(data => {
-        this.setState({
-          cart: this.state.cart.concat(data)
-        });
-      })
-      .catch(err => console.error(err));
+      .then(cartItem =>
+        this.setState({ cart: this.state.cart.concat(cartItem) })
+      );
   }
 
   setView(name, params) {
@@ -69,12 +68,14 @@ export default class App extends React.Component {
             <Header
               setView={this.setView}
               text={'Online Store'}
-              cartAmount={this.state.cart.length}/>
+              cartAmount={this.state.cart.length}
+            />
           </div>
 
           <div>
-            <ProductList setView={this.setView}/>
+            <ProductList setView={this.setView} />
           </div>
+
         </div>
       );
     } else if (view.name === 'details') {
@@ -94,6 +95,23 @@ export default class App extends React.Component {
               productID={view.params}
               addToCart={this.addToCart}
             />
+          </div>
+        </div>
+      );
+    } else if (view.name === 'cart') {
+      return (
+        <div className="container">
+          <div>
+            <Header
+              setView={this.setView}
+              text={'Online Store'}
+              cartAmount={this.state.cart.length}
+            />
+          </div>
+          <div>
+            <CartSummary
+              cartItems={this.state.cart}
+              setView={this.setView} />
           </div>
         </div>
       );

@@ -44,12 +44,12 @@ export default class App extends React.Component {
 
   removeFromCart(id) {
     const idSelected = this.state.cart.findIndex(e => e.productId === id);
+
     fetch(`/api/cart/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id })
+      }
     })
       .then(() => {
         const newArr = [...this.state.cart];

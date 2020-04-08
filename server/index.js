@@ -154,6 +154,33 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/orders', (req, res, next) => {
+  const { cartId } = req.session;
+  const { name, creditCard, shippingAddress } = req.body;
+
+  if (!cartId) {
+    res.status(400).json({
+      error: 'cardId does not exist'
+    });
+    if (!name || !creditCard || !shippingAddress) {
+      res.status(400).json({
+        error: 'Name, credit card, and shipping address are needed'
+      });
+    }
+  }
+  const values = [cartId, name, creditCard, shippingAddress];
+  const sql = `
+    INSERT INTO "orders" ("cartId", "name", "creditCard", "shippingAddress")
+    VALUES ($1, $2, $3, $4)
+    RETURNING *
+  `;
+  db.query(sql, values).then(result => {
+    const orders = result.rows[0];
+    delete req.session.cartId;
+    res.status(201).json(orders);
+  });
+});
+
 app.delete('/api/cart/:cartItemId', (req, res, next) => {
   const cartItemId = req.params.cartItemId;
   if (!cartItemId || !Number(cartItemId)) { throw new ClientError('Cart item id required', 400); } else if (cartItemId <= 0) { throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400); }

@@ -181,18 +181,20 @@ app.post('/api/orders', (req, res, next) => {
   });
 });
 
-app.delete('/api/cart/:cartItemId', (req, res, next) => {
-  const cartItemId = req.params.cartItemId;
-  if (!cartItemId || !Number(cartItemId)) { throw new ClientError('Cart item id required', 400); } else if (cartItemId <= 0) { throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400); }
+app.delete('/api/cart/:productId', (req, res, next) => {
+  const productId = req.params.productId;
+  const cartId = req.session.cartId;
+  if (!productId || !Number(productId)) { throw new ClientError('Cart item id required', 400); } else if (productId <= 0) { throw new ClientError(`Cart item id ${productId} is invalid`, 400); }
   const sql = `
   DELETE FROM "cartItems"
-  WHERE "cartItemId" = $1
+  WHERE "productId" = $1
+  AND "cartId" = $2
   `;
-  const value = [cartItemId];
+  const value = [productId, cartId];
   db.query(sql, value)
     .then(data => {
       if (data.rowCount === 0) {
-        throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400);
+        throw new ClientError(`Cart item id ${productId} is invalid`, 400);
       }
       res.sendStatus(204);
     })

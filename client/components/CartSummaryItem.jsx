@@ -18,6 +18,12 @@ export default class CartSummaryItem extends React.Component {
               ${(this.props.price / 100).toFixed(2)}
             </div>
             <div>{this.props.shortDesc}</div>
+            <div>
+              <button type="button" className="btn btn-danger"
+                onClick={this.props.onclickDel}>
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>

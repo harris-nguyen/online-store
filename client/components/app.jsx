@@ -15,6 +15,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
     this.addToCart = this.addToCart.bind(this);
   }
 
@@ -36,6 +37,25 @@ export default class App extends React.Component {
       .then(data => {
         this.setState({
           cart: data
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
+  removeFromCart(id) {
+    const idSelected = this.state.cart.findIndex(e => e.productId === id);
+    fetch(`/api/cart/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    })
+      .then(() => {
+        const newArr = [...this.state.cart];
+        newArr.splice(idSelected, 1);
+        this.setState({
+          cart: newArr
         });
       })
       .catch(err => console.error(err));
@@ -75,7 +95,6 @@ export default class App extends React.Component {
           <div>
             <ProductList setView={this.setView} />
           </div>
-
         </div>
       );
     } else if (view.name === 'details') {
@@ -110,8 +129,10 @@ export default class App extends React.Component {
           </div>
           <div>
             <CartSummary
+              removeFromCart={this.removeFromCart}
               cartItems={this.state.cart}
-              setView={this.setView} />
+              setView={this.setView}
+            />
           </div>
         </div>
       );

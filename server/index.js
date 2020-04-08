@@ -154,6 +154,23 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/carts', (req, res, next) => {
+  const cartItemId = req.body.cartItemId;
+  if (!cartItemId || !Number(cartItemId)) throw new ClientError('Cart item id required', 400);
+  else if (cartItemId <= 0) throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400);
+  const sql = `
+  DELETE FROM "cartItems"
+  WHERE "cartItemId" = $1 AND "cartId" = $2
+  `;
+  const value = [cartItemId, req.session.cartId];
+  db.query(sql, value)
+    .then(data => {
+      if (data.rowCount === 0) { throw new ClientError(`Cart item id ${cartItemId} is invalid`, 400); }
+      res.sendStatus(204);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

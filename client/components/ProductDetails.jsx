@@ -28,14 +28,6 @@ export default class ProductDetails extends React.Component {
       const data = this.state.product;
       return (
         <div>
-          <div
-            className="fas fa-home text-muted"
-            onClick={() =>
-              this.props.setView('catalog', { productId: this.props.productID })
-            }
-          >
-            {' '}Back to Catalog
-          </div>
           <div>
             <div className="row ">
               <div className="col-6 ">

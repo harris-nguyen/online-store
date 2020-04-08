@@ -6,14 +6,7 @@ export default class CartSummary extends React.Component {
     const data = this.props.cartItems;
     return (
       <div className="container ">
-        <div
-          onClick={() => this.props.setView('catalog', {})}
-          className=" text-muted  fas fa-home  "
-        >
-          {' '}
-          Back to Catalog
-        </div>
-        <h3>My Shopping Cart</h3>
+        <h3 className='text-center'>My Shopping Cart</h3>
         <div>
           {data.length === 0 ? (
             <h1>Empty Cart</h1>

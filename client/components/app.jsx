@@ -9,12 +9,16 @@ export default class App extends React.Component {
     this.state = {
       message: null,
       isLoading: true,
+      cart: [],
       view: { name: 'catalog', params: {} }
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
   }
 
   componentDidMount() {
+    this.getCartItems();
+
     fetch('/api/health-check')
       .then(res => res.json())
       .then(data =>
@@ -22,6 +26,34 @@ export default class App extends React.Component {
       )
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cart: data
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
+  addToCart(product) {
+    fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cart: this.state.cart.concat(data)
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   setView(name, params) {
@@ -34,7 +66,10 @@ export default class App extends React.Component {
       return (
         <div className="container">
           <div>
-            <Header setView={this.setView} text={'Online Store'} />
+            <Header
+              setView={this.setView}
+              text={'Online Store'}
+              cartAmount={this.state.cart.length}/>
           </div>
 
           <div>
@@ -46,11 +81,19 @@ export default class App extends React.Component {
       return (
         <div className="container">
           <div>
-            <Header setView={this.setView} text={'Online Store'} />
+            <Header
+              setView={this.setView}
+              text={'Online Store'}
+              cartAmount={this.state.cart.length}
+            />
           </div>
 
           <div>
-            <ProductDetails setView={this.setView} productID={view.params} />
+            <ProductDetails
+              setView={this.setView}
+              productID={view.params}
+              addToCart={this.addToCart}
+            />
           </div>
         </div>
       );

@@ -19,7 +19,7 @@ export default class ProductItemList extends React.Component {
               />
               <h5 className="card-title">{this.props.name}</h5>
               <p className="card-text">
-                <small className="text-muted">{this.props.price}</small>
+                <small className="text-muted">{`$${this.props.price}`}</small>
               </p>
               <div className="container">
                 <p className="card-text">{this.props.shortDesc}</p>

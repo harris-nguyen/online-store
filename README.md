@@ -14,7 +14,7 @@ Try the application live at [ TBA ]
 - User can place an order
 
 ## Preview
-![online_store](shopping.gif)
+![online_store]()
 
 ## System Requirements
 - Node.js 10 or higher

@@ -1,7 +1,7 @@
 ## online-store
 A full stack Node.js and React shopping cart app
 
-#### Live Demo
+## Live Demo
 Try the application live at [ TBA ]
  
 #### Features

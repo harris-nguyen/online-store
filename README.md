@@ -4,7 +4,7 @@ A full stack Node.js and React shopping cart app
 ## Live Demo
 Try the application live at [ TBA ]
  
-#### Features
+## Features
 - User can view the products for sale
 - User can view details of a product
 - User can add a product to their cart
@@ -13,15 +13,15 @@ Try the application live at [ TBA ]
 - User can view their cart summary
 - User can place an order
 
-#### Preview
+## Preview
 ![online_store](shopping.gif)
 
-#### System Requirements
+## System Requirements
 - Node.js 10 or higher
 - NPM 6 or higher
 - PostgreSQL 6 or higher
 
-#### Getting Started
+## Getting Started
 1. Clone the repository.
 ```
 git clone https://github.com/harris-nguyen/online-store.git

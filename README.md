@@ -3,7 +3,7 @@ A full stack Node.js and React shopping cart app
 
 ## Live Demo
 Try the application live at [ TBA ]
- 
+
 ## Features
 - User can view the products for sale
 - User can view details of a product
@@ -14,7 +14,7 @@ Try the application live at [ TBA ]
 - User can place an order
 
 ## Preview
-![online_store]()
+![online_store](shopping.gif)
 
 ## System Requirements
 - Node.js 10 or higher

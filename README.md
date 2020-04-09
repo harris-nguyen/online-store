@@ -13,7 +13,7 @@ Try the application live at [ TBA ]
 - User can place an order
 
 #### Preview
-
+![SGT React](shopping.gif)
 
 #### System Requirements
 - Node.js 10 or higher

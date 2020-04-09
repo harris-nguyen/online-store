@@ -9,6 +9,7 @@ Try the application live at [ TBA ]
 - User can view details of a product
 - User can add a product to their cart
 - User can add a product to their cart
+- User can delete a product from their cart
 - User can view their cart summary
 - User can place an order
 

@@ -6,7 +6,9 @@ export default class CartSummary extends React.Component {
     const data = this.props.cartItems;
     return (
       <div className="container ">
-        <h3 className='text-center'>My Shopping Cart</h3>
+        <h3 className='text-center'>
+        My Shopping Cart
+        </h3>
         <div>
           {data.length === 0 ? (
             <h1>Empty Cart</h1>

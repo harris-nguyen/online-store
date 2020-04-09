@@ -1,4 +1,4 @@
-## online-store
+## Full-Stack Online-Store
 A full stack Node.js and React shopping cart app
 
 ## Live Demo

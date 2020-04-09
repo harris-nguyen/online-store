@@ -21,4 +21,36 @@ Try the application live at [ TBA ]
 - PostgreSQL 6 or higher
 
 #### Getting Started
-
+1. Clone the repository.
+```
+git clone https://github.com/harris-nguyen/online-store.git
+```
+2. Change directory to cloned folder
+```
+cd online-store/
+```
+3. Install all dependencies with NPM.
+```
+npm install
+```
+4. Start PostgreSQL server
+```
+sudo service postgresql start
+```
+5. Create the database
+```
+createdb onlineStore
+```
+6. Import the example database to PostgreSQL
+```
+npm db:import
+```
+7. Access the onlineStore Postgresql database server using pgweb in your default web browser
+```
+pgweb --db=onlineStore
+```
+8. Start the project.
+```
+npm run dev
+```
+9. Once started, you can view the application by opening https://localhost:3000

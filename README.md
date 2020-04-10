@@ -11,6 +11,7 @@ Try the application live at https://online-store.harrisitowynn.com/
 - User can delete a product from their cart
 - User can view their cart summary
 - User can place an order
+- Mobile Responsiveness
 
 ## Preview
 ![online_store](shopping.gif)

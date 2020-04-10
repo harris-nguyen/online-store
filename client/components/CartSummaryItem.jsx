@@ -3,7 +3,7 @@ import React from 'react';
 export default class CartSummaryItem extends React.Component {
   render() {
     return (
-      <div className="container cardMargin boxShadowCart zoom">
+      <div className="container cardMargin boxShadowCart">
         <div className="row border">
           <div className="col">
             <img

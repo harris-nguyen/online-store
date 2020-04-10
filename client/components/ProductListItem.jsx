@@ -4,7 +4,7 @@ export default class ProductItemList extends React.Component {
   render() {
     return (
       <div
-        className="text-center cardMargin boxShadow"
+        className="text-center cardMargin boxShadow zoom"
         onClick={() =>
           this.props.setView('details', { productId: this.props.productId })
         }

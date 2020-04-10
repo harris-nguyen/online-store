@@ -2,7 +2,7 @@
 A full stack Node.js and React shopping cart app
 
 ## Live Demo
-Try the application live at [ TBA ]
+Try the application live at https://github.com/harris-nguyen/online-store
 
 ## Features
 - User can view products for sale

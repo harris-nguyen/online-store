@@ -20,7 +20,7 @@ export default class CartSummary extends React.Component {
                   shortDesc={e.shortDescription}
                   price={e.price}
                   image={e.image}
-                  onclickDel={() => this.props.removeFromCart(e.productId)}
+                  onclickDel={() => this.props.removeFromCart(e.cartItemId)}
                 />
               );
             })

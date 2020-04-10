@@ -93,7 +93,7 @@ export default class CheckoutForm extends React.Component {
                 className="btn btn-secondary"
                 onClick={() => this.props.setView('catalog', {})}
               >
-                continue shipping
+                continue shopping
               </button>
             </div>
             <div className="cardMargin">

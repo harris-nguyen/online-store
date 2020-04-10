@@ -9,22 +9,21 @@ export default class CartSummary extends React.Component {
         <h3 className='text-center'>My Shopping Cart
         </h3>
         <div>
-          {data.length === 0 ? (
-            <h1>Empty Cart</h1>
-          ) : (
-            data.map((e, index) => {
-              return (
-                <CartSummaryItem
-                  key={index}
-                  name={e.name}
-                  shortDesc={e.shortDescription}
-                  price={e.price}
-                  image={e.image}
-                  onclickDel={() => this.props.removeFromCart(e.cartItemId)}
-                />
-              );
-            })
-          )}
+          {data.length === 0 ? (<h1>Empty Cart</h1>)
+            : (
+              data.map((e, index) => {
+                return (
+                  <CartSummaryItem
+                    key={index}
+                    name={e.name}
+                    shortDesc={e.shortDescription}
+                    price={e.price}
+                    image={e.image}
+                    onclickDel={() => this.props.removeFromCart(e.cartItemId)}
+                  />
+                );
+              })
+            )}
           <div className="row">
             <div className="col align-items-center">
               <h6 className="totalCostPad cardMargin">

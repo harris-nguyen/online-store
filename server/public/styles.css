@@ -16,6 +16,9 @@ img {
   width: 100px
 }
 
+.redFont {
+  color: red;
+}
 .column {
   float: left;
   width: 25%;

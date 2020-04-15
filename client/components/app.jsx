@@ -4,6 +4,7 @@ import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import CartSummary from './CartSummary';
 import CheckoutForm from './CheckoutForm';
+import Alert from './alert';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -78,7 +79,11 @@ export default class App extends React.Component {
   }
 
   placeOrder(orderObj) {
-    if (orderObj.name || orderObj.creditCard || orderObj.shippingAddress) {
+    if (
+      orderObj.name.length !== 0 &&
+      orderObj.creditCard.length !== 0 &&
+      orderObj.shippingAddress.length !== 0
+    ) {
       fetch('/api/orders', {
         method: 'POST',
         headers: {
@@ -92,10 +97,13 @@ export default class App extends React.Component {
             cart: [],
             view: { name: 'catalog', params: {} }
           });
-        })
-        .then(alert('Thank you for your purchase!'));
+        });
     } else {
-      alert('Must enter Name, Credit Card Information, & Shipping Address');
+      this.setState({
+        view: {
+          name: 'alert'
+        }
+      });
     }
   }
 
@@ -175,6 +183,24 @@ export default class App extends React.Component {
             <CheckoutForm
               onSubmit={this.placeOrder}
               cartItems={this.state.cart}
+              setView={this.setView}
+            />
+          </div>
+        </div>
+      );
+    } else if (view.name === 'alert') {
+      return (
+        <div className="container">
+          <div>
+            <Header
+              setView={this.setView}
+              text={'Online Store'}
+              cartAmount={this.state.cart.length}
+            />
+          </div>
+
+          <div>
+            <Alert
               setView={this.setView}
             />
           </div>

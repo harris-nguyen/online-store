@@ -29,18 +29,26 @@ export default class ProductDetails extends React.Component {
   }
 
   IncrementItem() {
-    this.setState({ qty: this.state.qty + 1 });
+    const data = this.state.product;
+    this.setState({
+      qty: this.state.qty + 1
+    });
+    this.props.addToCart(data);
   }
 
   DecreaseItem() {
+    // const cart = this.props.cartItems;
+    // console.log(cart);
     if (this.state.qty > 0) {
       this.setState({ qty: this.state.qty - 1 });
     } else {
       this.setState({ qty: 0 });
     }
+    // this.props.removeFromCart(console.log('clicked'));
   }
 
   render() {
+    // console.log(this.props.cartItems);
     const addModalClose = () => this.setState({ addModalShow: false });
     if (this.state.product) {
       const data = this.state.product;

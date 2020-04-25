@@ -11,8 +11,6 @@ export default class ClickModal extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line no-console
-    console.log('modal', this.props.show);
     return (
       <Modal
         {...this.props}

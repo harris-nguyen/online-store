@@ -8,7 +8,7 @@ export default class Logo extends React.Component {
         <div className="text-center fade-in">
           <img
             src="./images/brandlogo.png"
-            className="card-img-top"
+            className="w-100 p-3"
             alt="logo"
           />
         </div>

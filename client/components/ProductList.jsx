@@ -1,17 +1,20 @@
 import React from 'react';
 import ProductItemList from './ProductListItem';
+import ClickModal from './ClickModal';
 
 export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      addModalShow: false
     };
     this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount() {
     this.getProducts();
+    this.setState({ addModalShow: true });
   }
 
   getProducts() {
@@ -28,6 +31,7 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const addModalClose = () => this.setState({ addModalShow: false });
     const productData = this.state.products;
     const data = productData.map((e, index) => {
       return (
@@ -43,7 +47,12 @@ export default class ProductList extends React.Component {
       );
     });
     return (
-      <div className="">
+      <div className="container">
+        <div className=" text-center">
+
+          <ClickModal show={this.state.addModalShow} onHide={addModalClose} />
+
+        </div>
         <div className="cardMargin">{data}</div>
       </div>
     );

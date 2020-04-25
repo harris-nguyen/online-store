@@ -1,10 +1,13 @@
 import React from 'react';
+import ClickModal from './ClickModal';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      addModalShow: false
     };
 
   }
@@ -24,6 +27,7 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
+    const addModalClose = () => this.setState({ addModalShow: false });
     if (this.state.product) {
       const data = this.state.product;
       return (
@@ -42,9 +46,7 @@ export default class ProductDetails extends React.Component {
                 <div className="text-muted">
                   ${(data.price / 100).toFixed(2)}
                 </div>
-                <div className="fontSizeTest">
-                  {data.shortDescription}
-                </div>
+                <div className="fontSizeTest">{data.shortDescription}</div>
                 <button
                   onClick={() => this.props.addToCart(data)}
                   type="button"
@@ -53,9 +55,24 @@ export default class ProductDetails extends React.Component {
                   Add to Cart
                 </button>
               </div>
-              <div className="m-3">
-                {data.longDescription}
+
+              <div>
+                <ButtonToolbar>
+                  <Button
+                    className="btn btn-primary"
+                    onClick={() => this.setState({ addModalShow: true })}
+                  >
+                    Modal
+                  </Button>
+
+                  <ClickModal
+                    show={this.state.addModalShow}
+                    onHide={addModalClose}
+                  />
+                </ButtonToolbar>
               </div>
+
+              <div className="m-3">{data.longDescription}</div>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ export default class ProductDetails extends React.Component {
     this.state = {
       product: null,
       addModalShow: false,
-      clicks: 1
+      qty: 1
     };
     this.IncrementItem = this.IncrementItem.bind(this);
     this.DecreaseItem = this.DecreaseItem.bind(this);
@@ -29,11 +29,15 @@ export default class ProductDetails extends React.Component {
   }
 
   IncrementItem() {
-    this.setState({ clicks: this.state.clicks + 1 });
+    this.setState({ qty: this.state.qty + 1 });
   }
 
   DecreaseItem() {
-    this.setState({ clicks: this.state.clicks - 1 });
+    if (this.state.qty > 0) {
+      this.setState({ qty: this.state.qty - 1 });
+    } else {
+      this.setState({ qty: 0 });
+    }
   }
 
   render() {
@@ -68,13 +72,11 @@ export default class ProductDetails extends React.Component {
                       type="button"
                       className="btn btn-primary"
                     >
-                      Add to Cart {this.state.clicks}
+                      Add to Cart {this.state.qty}
                     </button>
-                  </span>
-                  {' '}
+                  </span>{' '}
                   <button onClick={this.IncrementItem}>+</button>
                   <button onClick={this.DecreaseItem}>-</button>
-
                   <AddedtoCartModal
                     show={this.state.addModalShow}
                     onHide={addModalClose}

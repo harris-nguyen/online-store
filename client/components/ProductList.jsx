@@ -7,14 +7,18 @@ export default class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      addModalShow: false
+      addModalShow: true
     };
     this.getProducts = this.getProducts.bind(this);
+    this.turnoff = this.turnoff.bind(this);
   }
 
   componentDidMount() {
     this.getProducts();
-    this.setState({ addModalShow: true });
+  }
+
+  turnoff() {
+    this.setState({ addModalShow: false });
   }
 
   getProducts() {
@@ -46,13 +50,17 @@ export default class ProductList extends React.Component {
         />
       );
     });
+    // eslint-disable-next-line no-console
+    console.log('products', this.state.addModalShow);
     return (
       <div className="container">
-        <div className=" text-center">
-
-          <ClickModal show={this.state.addModalShow} onHide={addModalClose} />
-
-        </div>
+        {this.state.addModalShow === true ? (
+          <ClickModal
+            show={this.state.addModalShow}
+            onHide={addModalClose}
+          />
+        ) : null}
+        <div className=" text-center"></div>
         <div className="cardMargin">{data}</div>
       </div>
     );

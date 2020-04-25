@@ -6,6 +6,7 @@ import CartSummary from './CartSummary';
 import CheckoutForm from './CheckoutForm';
 import Alert from './alert';
 import ClickModal from './ClickModal';
+import Logo from './Logo';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -133,6 +134,10 @@ export default class App extends React.Component {
               text={'Online Store'}
               cartAmount={this.state.cart.length}
             />
+          </div>
+
+          <div className="container">
+            <Logo />
           </div>
 
           <div>

@@ -11,7 +11,7 @@ export default class ProductItemList extends React.Component {
       >
         <div className="row">
           <div className="col">
-            <div className="card">
+            <div className="card paddingCard">
               <img
                 src={this.props.image}
                 className="card-img-top"

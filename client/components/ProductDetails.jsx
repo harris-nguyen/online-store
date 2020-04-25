@@ -32,7 +32,7 @@ export default class ProductDetails extends React.Component {
       return (
         <div>
           <div>
-            <div className="row ">
+            <div className="row paddingCard cardBorder">
               <div className="col-6 ">
                 <img
                   src={data.image}

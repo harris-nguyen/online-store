@@ -5,6 +5,8 @@ import ProductDetails from './ProductDetails';
 import CartSummary from './CartSummary';
 import CheckoutForm from './CheckoutForm';
 import Alert from './alert';
+import ClickModal from './ClickModal';
+import Logo from './Logo';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,17 +15,20 @@ export default class App extends React.Component {
       message: null,
       isLoading: true,
       cart: [],
-      view: { name: 'catalog', params: {} }
+      view: { name: 'catalog', params: {} },
+      addModalShow: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.turnoff = this.turnoff.bind(this);
   }
 
   componentDidMount() {
     this.getCartItems();
+    this.setState({ addModalShow: true });
 
     fetch('/api/health-check')
       .then(res => res.json())
@@ -32,6 +37,10 @@ export default class App extends React.Component {
       )
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+  }
+
+  turnoff() {
+    this.setState({ addModalShow: false });
   }
 
   getCartItems() {
@@ -46,7 +55,9 @@ export default class App extends React.Component {
   }
 
   removeFromCart(id) {
-    const idSelected = this.state.cart.findIndex(e => e.cartItemId === id);
+    const idSelected = this.state.cart.findIndex(
+      e => e.cartItemId === id
+    );
 
     fetch(`/api/cart/${id}`, {
       method: 'DELETE',
@@ -81,8 +92,8 @@ export default class App extends React.Component {
   placeOrder(orderObj) {
     if (
       orderObj.name.length !== 0 &&
-      orderObj.creditCard.length !== 0 &&
-      orderObj.shippingAddress.length !== 0
+                     orderObj.creditCard.length !== 0 &&
+                     orderObj.shippingAddress.length !== 0
     ) {
       fetch('/api/orders', {
         method: 'POST',
@@ -112,6 +123,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    const addModalClose = () => this.setState({ addModalShow: false });
     const view = this.state.view;
     if (view.name === 'catalog') {
       return (
@@ -124,9 +136,14 @@ export default class App extends React.Component {
             />
           </div>
 
+          <div className="container">
+            <Logo />
+          </div>
+
           <div>
             <ProductList setView={this.setView} />
           </div>
+          <ClickModal show={this.state.addModalShow} onHide={addModalClose} />
         </div>
       );
     } else if (view.name === 'details') {
@@ -200,9 +217,7 @@ export default class App extends React.Component {
           </div>
 
           <div>
-            <Alert
-              setView={this.setView}
-            />
+            <Alert setView={this.setView} />
           </div>
         </div>
       );

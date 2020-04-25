@@ -1,10 +1,12 @@
 import React from 'react';
+import AddedtoCartModal from './AddedtoCartModal';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      addModalShow: false
     };
 
   }
@@ -24,12 +26,13 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
+    const addModalClose = () => this.setState({ addModalShow: false });
     if (this.state.product) {
       const data = this.state.product;
       return (
         <div>
           <div>
-            <div className="row ">
+            <div className="row paddingCard cardBorder">
               <div className="col-6 ">
                 <img
                   src={data.image}
@@ -42,20 +45,30 @@ export default class ProductDetails extends React.Component {
                 <div className="text-muted">
                   ${(data.price / 100).toFixed(2)}
                 </div>
-                <div className="fontSizeTest">
-                  {data.shortDescription}
+                <div className="fontSizeTest">{data.shortDescription}</div>
+
+                <div>
+                  <span
+                    className=""
+                    onClick={() => this.setState({ addModalShow: true })}
+                  >
+                    <button
+                      onClick={() => this.props.addToCart(data)}
+                      type="button"
+                      className="btn btn-primary"
+                    >
+                      Add to Cart
+                    </button>
+                  </span>
+
+                  <AddedtoCartModal
+                    show={this.state.addModalShow}
+                    onHide={addModalClose}
+                  />
                 </div>
-                <button
-                  onClick={() => this.props.addToCart(data)}
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  Add to Cart
-                </button>
               </div>
-              <div className="m-3">
-                {data.longDescription}
-              </div>
+
+              <div className="m-3">{data.longDescription}</div>
             </div>
           </div>
         </div>

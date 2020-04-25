@@ -4,7 +4,7 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <div className="container cardMargin boxShadowCart">
-        <div className="row border">
+        <div className="row border paddingCard">
           <div className="col">
             <img
               src={this.props.image}

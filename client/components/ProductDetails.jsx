@@ -64,6 +64,7 @@ export default class ProductDetails extends React.Component {
                   <AddedtoCartModal
                     show={this.state.addModalShow}
                     onHide={addModalClose}
+                    setView={this.props.setView}
                   />
                 </div>
               </div>

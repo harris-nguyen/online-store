@@ -136,7 +136,7 @@ export default class App extends React.Component {
             />
           </div>
 
-          <div className="container">
+          <div className="paddingCard ">
             <Logo />
           </div>
 

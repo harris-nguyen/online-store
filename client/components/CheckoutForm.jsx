@@ -48,12 +48,11 @@ export default class CheckoutForm extends React.Component {
 
     return (
       <div className="container">
-
         <div onClick={() => this.setState({ showModal: false })}>
           <CheckoutModal show={this.state.showModal} onHide={addModalClose} />
         </div>
 
-        <h3 className="text-center">CHECKOUT</h3>
+        <h3 className="text-center paddingCard">CHECKOUT</h3>
         <h6 className="text-muted totalCostPad">
           Order Total: $
           {(data.reduce((a, b) => +a + +b.price, 0) / 100).toFixed(2)}

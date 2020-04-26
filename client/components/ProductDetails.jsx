@@ -7,7 +7,7 @@ export default class ProductDetails extends React.Component {
     this.state = {
       product: null,
       addModalShow: false,
-      qty: 1
+      qty: 0
     };
     this.IncrementItem = this.IncrementItem.bind(this);
     this.DecreaseItem = this.DecreaseItem.bind(this);
@@ -37,14 +37,18 @@ export default class ProductDetails extends React.Component {
   }
 
   DecreaseItem() {
+    // const productId = this.state.product;
     // const cart = this.props.cartItems;
-    // console.log(cart);
+    // const cartId = cart.map(e => e.cartItemId);
+
     if (this.state.qty > 0) {
       this.setState({ qty: this.state.qty - 1 });
     } else {
       this.setState({ qty: 0 });
     }
-    // this.props.removeFromCart(console.log('clicked'));
+    // eslint-disable-next-line no-console
+    console.log('clicked');
+    // this.props.removeFromCart();
   }
 
   render() {
@@ -75,17 +79,17 @@ export default class ProductDetails extends React.Component {
                     className=""
                     onClick={() => this.setState({ addModalShow: true })}
                   >
-                    <button
-                      onClick={() => this.props.addToCart(data)}
+                    <div
                       type="button"
                       className="btn btn-primary"
+                      onClick={this.IncrementItem}
                     >
-                      Add to Cart {this.state.qty}
-                    </button>
+                      Add to cart
+                    </div>
                   </span>{' '}
-                  <button onClick={this.IncrementItem}>+</button>
-                  <button onClick={this.DecreaseItem}>-</button>
                   <AddedtoCartModal
+                    qty={this.state.qty}
+                    IncrementItem={this.IncrementItem}
                     show={this.state.addModalShow}
                     onHide={addModalClose}
                     setView={this.props.setView}
@@ -103,3 +107,5 @@ export default class ProductDetails extends React.Component {
     }
   }
 }
+
+// <button onClick={this.DecreaseItem}>-</button>;

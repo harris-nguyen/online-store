@@ -183,6 +183,8 @@ export default class App extends React.Component {
               removeFromCart={this.removeFromCart}
               cartItems={this.state.cart}
               setView={this.setView}
+              productID={view.params}
+              addToCart={this.addToCart}
             />
           </div>
         </div>

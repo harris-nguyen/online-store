@@ -20,12 +20,14 @@ export default class AddedtoCartModal extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+              Item Added
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>item placed Modal</h4>
-            <p>hiiiiiiii</p>
+            <h4>Would you like to add more?</h4>
+            <button onClick={() => this.props.IncrementItem()}>+</button>
+            {' '}
+            <span>QTY {this.props.qty}</span>
           </Modal.Body>
           <Modal.Footer>
             <div
@@ -33,7 +35,7 @@ export default class AddedtoCartModal extends React.Component {
               onClick={() => this.props.setView('details', {})}
             >
               <button className="btn btn-primary" onClick={this.props.onHide}>
-              continue shopping
+                continue shopping
               </button>
             </div>
             <div>
@@ -41,7 +43,7 @@ export default class AddedtoCartModal extends React.Component {
                 className="pointer btn btn-success"
                 onClick={() => this.props.setView('cart', {})}
               >
-              cart
+                cart
               </button>
             </div>
           </Modal.Footer>

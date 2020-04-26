@@ -4,21 +4,26 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <div className="row whiteFont navbar black ">
+        <nav className="row navbar black">
           <div
-            className="col-8 pointer"
+            className="whiteFont pad pointer col"
             onClick={() => this.props.setView('catalog', {})}
           >
             {this.props.text}
           </div>
+
+          <div className="whiteFont pad whiteFont pad border fade-in">
+            by HARRIS NGUYEN
+          </div>
+
           <div
-            className="col-4 text-right cartSize pointer"
+            className="col text-right cartSize pointer whiteFont pad"
             onClick={() => this.props.setView('cart', {})}
           >
             {this.props.cartAmount} {'items'}
             <span className="fas fa-shopping-cart"></span>
           </div>
-        </div>
+        </nav>
       </div>
     );
   }

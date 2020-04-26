@@ -162,6 +162,8 @@ export default class App extends React.Component {
               setView={this.setView}
               productID={view.params}
               addToCart={this.addToCart}
+              cartItems={this.state.cart}
+              removeFromCart={this.removeFromCart}
             />
           </div>
         </div>
@@ -181,6 +183,8 @@ export default class App extends React.Component {
               removeFromCart={this.removeFromCart}
               cartItems={this.state.cart}
               setView={this.setView}
+              productID={view.params}
+              addToCart={this.addToCart}
             />
           </div>
         </div>

@@ -28,6 +28,11 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const ascendingOrderItems = this.state.products;
+    ascendingOrderItems.sort(function (a, b) {
+      return a.productId - b.productId || a.name.localeCompare(b.name);
+    });
+
     const productData = this.state.products;
     const data = productData.map((e, index) => {
       return (

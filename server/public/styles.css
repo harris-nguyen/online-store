@@ -6,6 +6,10 @@
   background-color: black;
 }
 
+.backgroundBlack {
+  background-color: black;
+}
+
 .titleFont {
   font-size: 100%;
 }
@@ -19,6 +23,7 @@ img {
 .redFont {
   color: red;
 }
+
 .column {
   float: left;
   width: 25%;
@@ -57,6 +62,10 @@ img {
   padding: 1rem;
 }
 
+.logoHeight {
+  height: 15%;
+}
+
 .title {
   margin-top: -41px;
     margin-bottom: -69px;
@@ -64,6 +73,10 @@ img {
 
 .pad{
 padding: 5px
+}
+
+.borderRed {
+  border: 1px solid maroon;
 }
 
 .fade-in{

@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckoutModal from './CheckoutModal';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -6,12 +7,17 @@ export default class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      shippingAddress: ''
+      shippingAddress: '',
+      showModal: false
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangecreditCard = this.handleChangecreditCard.bind(this);
     this.handleChangeshippingAddress = this.handleChangeshippingAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ showModal: true });
   }
 
   handleChangeName(event) {
@@ -37,10 +43,16 @@ export default class CheckoutForm extends React.Component {
   }
 
   render() {
+    const addModalClose = () => this.setState({ showModal: false });
     const data = this.props.cartItems;
+
     return (
       <div className="container">
-        <h3 className="text-center">CHECKOUT</h3>
+        <div onClick={() => this.setState({ showModal: false })}>
+          <CheckoutModal show={this.state.showModal} onHide={addModalClose} />
+        </div>
+
+        <h3 className="text-center paddingCard">CHECKOUT</h3>
         <h6 className="text-muted totalCostPad">
           Order Total: $
           {(data.reduce((a, b) => +a + +b.price, 0) / 100).toFixed(2)}

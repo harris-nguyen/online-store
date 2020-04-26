@@ -7,6 +7,7 @@ import CheckoutForm from './CheckoutForm';
 import Alert from './alert';
 import ClickModal from './ClickModal';
 import Logo from './Logo';
+import PurchasedConfirmed from './PurchasedConfirmed';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
       cart: [],
       view: { name: 'catalog', params: {} },
       addModalShow: true
+
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -106,7 +108,7 @@ export default class App extends React.Component {
         .then(order => {
           this.setState({
             cart: [],
-            view: { name: 'catalog', params: {} }
+            view: { name: 'confimed', params: {} }
           });
         });
     } else {
@@ -136,7 +138,7 @@ export default class App extends React.Component {
             />
           </div>
 
-          <div className="container">
+          <div className="paddingCard ">
             <Logo />
           </div>
 
@@ -222,6 +224,22 @@ export default class App extends React.Component {
 
           <div>
             <Alert setView={this.setView} />
+          </div>
+        </div>
+      );
+    } else if (view.name === 'confimed') {
+      return (
+        <div className="container">
+          <div>
+            <Header
+              setView={this.setView}
+              text={'Online Store'}
+              cartAmount={this.state.cart.length}
+            />
+          </div>
+
+          <div>
+            <PurchasedConfirmed setView={this.setView} />
           </div>
         </div>
       );

@@ -3,7 +3,7 @@ import React from 'react';
 export default class Alert extends React.Component {
   render() {
     return (
-      <div>
+      <div className="paddingCard container text-center">
         <h1 className="redFont">Please fill out all inputs</h1>
         <button
           type="submit"

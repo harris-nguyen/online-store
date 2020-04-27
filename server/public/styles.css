@@ -80,6 +80,7 @@ padding: 5px
 }
 
 .fade-in{
+  background-color: black;
   animation: animationFrames ease 1s;
   animation-iteration-count: 1;
   transform-origin: 50% 50%;
@@ -155,4 +156,25 @@ padding: 5px
     opacity:1;
     -ms-transform:  translate(0px,0px)  ;
   }
+}
+
+.fontstyle {
+  font-family: "Brush Script MT",
+  cursive; font-size: 125%;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4%;
+}
+
+.cardPadding {
+  padding: 16px;
+}
+
+.byHarrisFontSize {
+  font-size: 30%;
+}
+
+.numberOfDays{
+  font-size: 10px;
 }

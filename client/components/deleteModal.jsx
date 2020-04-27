@@ -13,7 +13,7 @@ export default class DeleteModal extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Item Added
+              <div>{this.props.name}</div>
             </Modal.Title>
           </Modal.Header>
           <div className="container text-center">
@@ -25,18 +25,17 @@ export default class DeleteModal extends React.Component {
                 className="card-img-top"
               />
             </div>
-            <div>{this.props.name}</div>
             <div>${(this.props.price / 100).toFixed(2)}</div>
             <div>{this.props.shortDesc}</div>
           </div>
           <Modal.Footer>
             <div>
-              <button className="btn btn-warning" onClick={this.props.onHide}>
+              <button className="btn btn-danger" onClick={this.props.onHide}>
                 No
               </button>{' '}
               <span onClick={this.props.onHide}>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-success"
                   onClick={this.props.onclickDel}
                 >
                   Yes

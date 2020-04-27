@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckoutModal from './CheckoutModal';
+import GreetingLogin from './GreetingLogin';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -119,6 +120,7 @@ export default class CheckoutForm extends React.Component {
             </div>
           </div>
         </form>
+        <GreetingLogin />
       </div>
     );
   }

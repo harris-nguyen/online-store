@@ -25,14 +25,13 @@ export default class AddedtoCartModal extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <h4>Would you like to add more?</h4>
-            <button onClick={() => this.props.IncrementItem()}>+</button>
-            {' '}
+            <button onClick={() => this.props.IncrementItem()}>+</button>{' '}
             <span>QTY {this.props.qty}</span>
           </Modal.Body>
           <Modal.Footer>
             <div
               className="pointer"
-              onClick={() => this.props.setView('details', {})}
+              onClick={() => this.props.setView('catalog', {})}
             >
               <button className="btn btn-primary" onClick={this.props.onHide}>
                 continue shopping

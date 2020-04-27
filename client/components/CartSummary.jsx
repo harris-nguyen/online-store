@@ -20,6 +20,7 @@ export default class CartSummary extends React.Component {
                   price={e.price}
                   image={e.image}
                   onclickDel={() => this.props.removeFromCart(e.cartItemId)}
+                  setView={this.props.setView}
                 />
               );
             })

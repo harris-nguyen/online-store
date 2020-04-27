@@ -20,24 +20,35 @@ export default class ClickModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-                     Modal heading
+            {"Welcome to Stay ambitious' online store DEMO"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
+          <h4></h4>
           <p>
-                     Cras mattis consectetur purus sit amet fermentum. Cras
-                     justo odio, dapibus ac facilisis in, egestas eget quam.
-                     Morbi leo risus, porta ac consectetur ac, vestibulum at
-                     eros.
+            Due to the fact that this is an online store <b>DEMO</b>, all items
+            are only for display and not to be purchased as we are out of
+            inventory. Please do not provide sensitive information while
+            checking out. For real orders, please visit the link below for
+            contact information:
           </p>
+          <a
+            className=" whiteFont pad zoom pointer"
+            onClick={() =>
+              window.open('https://stayambitious.harrisitowynn.com/', '_blank')
+            }
+          >
+            <div className="redFont container text-center">
+              Stay ambitious &reg;
+            </div>
+          </a>
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="btn btn-success"
+            className="btn btn-success col align-self-center"
             onClick={this.props.onHide}
           >
-                     Close
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

@@ -125,6 +125,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     const addModalClose = () => this.setState({ addModalShow: false });
     const view = this.state.view;
     if (view.name === 'catalog') {

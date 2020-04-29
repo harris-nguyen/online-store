@@ -48,6 +48,10 @@ export default class CartSummary extends React.Component {
             </div>
           </div>
         </div>
+        <div className="paddingCard"></div>
+        <div className="paddingCard"></div>
+        <div className="paddingCard"></div>
+        <div className="paddingCard"></div>
       </div>
     );
 

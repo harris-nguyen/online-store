@@ -30,6 +30,10 @@ img {
   padding: 0 10px;
 }
 
+.modalBackGround {
+  background-color:rgba(0, 0, 0, 0.5);
+}
+
 .cardMargin {
   margin: 3%;
 }

@@ -5,18 +5,38 @@ export default class ClickModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      test: ''
+      backdrop: false,
+      show: false
     };
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+  }
 
+  close() {
+    this.setState({ show: false });
+  }
+
+  open() {
+    this.setState({ show: true });
   }
 
   render() {
+    const { backdrop, show } = this.state;
     return (
       <Modal
+        className="modalBackGround"
+        backdrop={backdrop}
+        show={show}
+        onHide={this.close}
         {...this.props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        inline
+        value={backdrop}
+        onChange={value => {
+          this.setState({ backdrop: value });
+        }}
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -43,12 +63,13 @@ export default class ClickModal extends React.Component {
             </div>
           </a>
         </Modal.Body>
+
         <Modal.Footer>
           <Button
             className="btn btn-success col align-self-center"
             onClick={this.props.onHide}
           >
-            Close
+            UNDERSTOOD
           </Button>
         </Modal.Footer>
       </Modal>

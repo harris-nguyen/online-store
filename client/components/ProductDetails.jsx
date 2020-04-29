@@ -9,9 +9,8 @@ export default class ProductDetails extends React.Component {
       addModalShow: false,
       qty: 0
     };
-    this.IncrementItem = this.IncrementItem.bind(this);
-    this.DecreaseItem = this.DecreaseItem.bind(this);
-
+    this.incrementItem = this.incrementItem.bind(this);
+    this.decreaseItem = this.decreaseItem.bind(this);
   }
 
   componentDidMount() {
@@ -28,7 +27,7 @@ export default class ProductDetails extends React.Component {
       .catch(err => console.error(err));
   }
 
-  IncrementItem() {
+  incrementItem() {
     const data = this.state.product;
     this.setState({
       qty: this.state.qty + 1
@@ -36,11 +35,7 @@ export default class ProductDetails extends React.Component {
     this.props.addToCart(data);
   }
 
-  DecreaseItem() {
-    // const productId = this.state.product;
-    // const cart = this.props.cartItems;
-    // const cartId = cart.map(e => e.cartItemId);
-
+  decreaseItem() {
     if (this.state.qty > 0) {
       this.setState({ qty: this.state.qty - 1 });
     } else {
@@ -52,8 +47,8 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
-    // console.log(this.props.cartItems);
-    const addModalClose = () => this.setState({ addModalShow: false });
+    const addModalClose = () =>
+      this.setState({ addModalShow: false });
     if (this.state.product) {
       const data = this.state.product;
       return (
@@ -70,26 +65,30 @@ export default class ProductDetails extends React.Component {
               <div className="col-4">
                 <h2>{data.name}</h2>
                 <div className="text-muted">
-                  ${(data.price / 100).toFixed(2)}
+                                 ${(data.price / 100).toFixed(2)}
                 </div>
-                <div className="fontSizeTest">{data.shortDescription}</div>
+                <div className="fontSizeTest">
+                  {data.shortDescription}
+                </div>
 
                 <div>
                   <span
                     className=""
-                    onClick={() => this.setState({ addModalShow: true })}
+                    onClick={() =>
+                      this.setState({ addModalShow: true })
+                    }
                   >
                     <div
                       type="button"
                       className="btn btn-primary"
-                      onClick={this.IncrementItem}
+                      onClick={this.incrementItem}
                     >
-                      Add to cart
+                                     Add to cart
                     </div>
                   </span>{' '}
                   <AddedtoCartModal
                     qty={this.state.qty}
-                    IncrementItem={this.IncrementItem}
+                    incrementItem={this.incrementItem}
                     show={this.state.addModalShow}
                     onHide={addModalClose}
                     setView={this.props.setView}
@@ -108,4 +107,4 @@ export default class ProductDetails extends React.Component {
   }
 }
 
-// <button onClick={this.DecreaseItem}>-</button>;
+// <button onClick={this.decreaseItem}>-</button>;

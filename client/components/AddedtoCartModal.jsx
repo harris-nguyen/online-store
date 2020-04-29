@@ -27,7 +27,7 @@ export default class AddedtoCartModal extends React.Component {
             <h4>Would you like to add more?</h4>
             <button
               className="btn btn-success"
-              onClick={() => this.props.IncrementItem()}
+              onClick={() => this.props.incrementItem()}
             >
               +
             </button>{' '}

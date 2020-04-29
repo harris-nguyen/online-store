@@ -2,8 +2,16 @@
   color: white;
 }
 
+.blackFont {
+  color: black;
+}
+
 .black {
   background-color: black;
+}
+
+.body {
+  background-image: url(./images/elephant.jpg);
 }
 
 .backgroundBlack {
@@ -33,6 +41,8 @@
 }
 
 .boxShadow {
+  height: 100%;
+  object-fit: contain;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -42,6 +52,10 @@
 
 .fontSizeTest {
   font-size: 70%;
+}
+
+.fontSizeTest1 {
+  font-size: 1rem;
 }
 
 .zoom {
@@ -186,18 +200,43 @@ padding: 5px
   background-color: #e5e5e5;
 }
 
-
 .image {
-  object-fit: contain;
-  width: 200px;
-  height: 50%;
+   height: 100%;
 }
 
+.hoverFade{
+  opacity: 0.3;
+}
 
-/* @media screen
-and (min-width: 375px)
-{
-  .image-description {
-    height: 100px;
-  }
-} */
+.img {
+    display: block;
+}
+
+.thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+.caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 120%;
+    /* text-shadow: 3px 3px 5px black */
+    text-shadow: 0 1px 0 black,
+               /* 0 2px 0 black,
+               0 3px 0 black,
+               0 4px 0 black,
+               0 5px 0 black, */
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}

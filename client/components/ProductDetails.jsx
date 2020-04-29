@@ -1,5 +1,6 @@
 import React from 'react';
 import AddedtoCartModal from './AddedtoCartModal';
+import SocialMediaAlert from './SocialMediaAlert';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
@@ -52,40 +53,49 @@ export default class ProductDetails extends React.Component {
     if (this.state.product) {
       const data = this.state.product;
       return (
-        <div>
+        <div className="container">
           <div>
-            <div className="row paddingCard cardBorder">
-              <div className="col-6 ">
+            <div className=" paddingCard cardBorder">
+              <div className="col">
                 <img
                   src={data.image}
                   className="card-img-top"
                   alt={data.name}
                 />
               </div>
-              <div className="col-4">
-                <h2>{data.name}</h2>
-                <div className="text-muted">
-                                 ${(data.price / 100).toFixed(2)}
-                </div>
-                <div className="fontSizeTest">
-                  {data.shortDescription}
-                </div>
+              <div className="col">
+                <div className=" text-center">
+                  <h2>{data.name}</h2>
+                  <div className="paddingCard"></div>
+                  <div className="fontSizeTest text-center">
+                    <b>{data.shortDescription}</b>
+                  </div>
 
-                <div>
-                  <span
-                    className=""
-                    onClick={() =>
-                      this.setState({ addModalShow: true })
-                    }
-                  >
-                    <div
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={this.incrementItem}
+                  <div className="paddingCard"></div>
+
+                  <div>{data.longDescription}</div>
+
+                  <div className="paddingCard"></div>
+
+                  <div className="text-muted text-center">
+                    ${(data.price / 100).toFixed(2)}
+                  </div>
+
+                  <div>
+                    <span
+                      className=""
+                      onClick={() => this.setState({ addModalShow: true })}
                     >
-                                     Add to cart
-                    </div>
-                  </span>{' '}
+                      <div
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={this.incrementItem}
+                      >
+                        Add to cart
+                      </div>
+                    </span>{' '}
+                  </div>
+
                   <AddedtoCartModal
                     qty={this.state.qty}
                     incrementItem={this.incrementItem}
@@ -95,9 +105,13 @@ export default class ProductDetails extends React.Component {
                   />
                 </div>
               </div>
-
-              <div className="m-3">{data.longDescription}</div>
             </div>
+            <div className="divider"></div>
+
+            <div className='container'>
+              <SocialMediaAlert/>
+            </div>
+
           </div>
         </div>
       );
@@ -106,5 +120,3 @@ export default class ProductDetails extends React.Component {
     }
   }
 }
-
-// <button onClick={this.decreaseItem}>-</button>;

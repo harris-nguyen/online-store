@@ -26,6 +26,9 @@ export default class SocialMediaAlert extends React.Component {
             </div>
           </div>
         </OverlayTrigger>{' '}
+        <div className="paddingCard"></div>
+        <div className="paddingCard"></div>
+        <div className="paddingCard"></div>
       </div>
     );
   }

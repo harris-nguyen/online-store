@@ -8,6 +8,7 @@ import Alert from './alert';
 import ClickModal from './ClickModal';
 import Logo from './Logo';
 import PurchasedConfirmed from './PurchasedConfirmed';
+import Mission from './Mission';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -147,6 +148,10 @@ export default class App extends React.Component {
             <ProductList setView={this.setView} />
           </div>
           <ClickModal show={this.state.addModalShow} onHide={addModalClose} />
+
+          <div>
+            <Mission />
+          </div>
         </div>
       );
     } else if (view.name === 'details') {

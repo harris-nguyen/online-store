@@ -52,8 +52,6 @@ export default class ProductList extends React.Component {
         <div className="text-center"></div>
         <div className="cardMargin">{data}</div>
         <div className="paddingCard"></div>
-        <div className="paddingCard"></div>
-        <div className="paddingCard"></div>
       </div>
     );
   }

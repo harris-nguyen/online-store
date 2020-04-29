@@ -55,12 +55,12 @@ export default class ProductDetails extends React.Component {
       return (
         <div className="container">
           <div>
-            <div className=" paddingCard cardBorder">
+            <div className="paddingCard cardBorder">
               <div className="paddingCard"></div>
-              <div className="col">
+              <div className="col text-center">
                 <img
                   src={data.image}
-                  className="card-img-top"
+                  className="round w-75 p-3"
                   alt={data.name}
                 />
               </div>

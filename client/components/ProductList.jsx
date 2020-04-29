@@ -50,7 +50,7 @@ export default class ProductList extends React.Component {
     return (
       <div className="container">
         <div className="text-center"></div>
-        <div className="cardMargin">{data}</div>
+        <div className="row ">{data}</div>
         <div className="paddingCard"></div>
       </div>
     );

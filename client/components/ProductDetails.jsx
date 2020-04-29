@@ -56,6 +56,7 @@ export default class ProductDetails extends React.Component {
         <div className="container">
           <div>
             <div className=" paddingCard cardBorder">
+              <div className="paddingCard"></div>
               <div className="col">
                 <img
                   src={data.image}
@@ -108,10 +109,9 @@ export default class ProductDetails extends React.Component {
             </div>
             <div className="divider"></div>
 
-            <div className='container'>
-              <SocialMediaAlert/>
+            <div className="container">
+              <SocialMediaAlert />
             </div>
-
           </div>
         </div>
       );

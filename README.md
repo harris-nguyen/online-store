@@ -14,7 +14,6 @@ Try the application live at https://online-store.harrisitowynn.com/
 - Mobile Responsiveness
 
 ## Preview
-![online_store](shopping.gif) 
 
 ## System Requirements
 - Node.js 10 or higher

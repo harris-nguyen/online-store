@@ -4,7 +4,7 @@ export default class ProductItemList extends React.Component {
   render() {
     return (
       <div
-        className="col-6 mb-5 zoom pointer"
+        className="col-6 mb-5 zoom pointer "
         onClick={() =>
           this.props.setView('details', { productId: this.props.productId })
         }

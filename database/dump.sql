@@ -229,17 +229,12 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 --
 
 COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
-4	2	1	2299
-6	2	4	2799
-11	3	3	1099
-13	4	5	5999
-14	5	2	2299
-15	5	1	2299
-21	6	5	5999
-22	6	1	2299
-25	7	5	5999
-26	7	2	2299
-29	8	4	2799
+16	43	1	2299
+17	45	1	2299
+18	46	1	2299
+19	47	1	2299
+20	48	1	2299
+21	48	2	2299
 \.
 
 
@@ -253,9 +248,13 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 3	2020-04-09 00:05:41.184548+00
 4	2020-04-09 00:12:51.961853+00
 5	2020-04-09 00:13:20.859553+00
-6	2020-04-09 00:58:49.940094+00
-7	2020-04-09 01:12:23.056129+00
-8	2020-04-09 22:08:20.073182+00
+42	2020-04-27 20:29:36.355653+00
+43	2020-04-28 21:11:53.696718+00
+44	2020-04-28 21:41:21.212569+00
+45	2020-04-29 00:13:18.544736+00
+46	2020-04-29 00:14:09.712561+00
+47	2020-04-29 00:17:30.432077+00
+48	2020-04-29 05:13:48.590347+00
 \.
 
 
@@ -269,7 +268,10 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 3	5	test	09876543	1 Space Park Blvd	2020-04-09 00:13:35.435259+00
 4	6	Stay ambitous	09876543	1 Space Park Blvd	2020-04-09 01:00:13.449067+00
 5	7	Stay ambitous	09876543	ssd	2020-04-09 01:13:34.987242+00
-6	8	Stay ambitous	09876543	1 Space Park Blvd	2020-04-09 22:08:32.162035+00
+26	43	Stay ambitous	09876543	606 Fano St	2020-04-29 00:07:24.904161+00
+27	45	Stay ambitous	09876543	606 Fano St	2020-04-29 00:13:28.054527+00
+28	46	Stay ambitous	09876543	606 Fano St	2020-04-29 00:14:15.531992+00
+29	47	Stay ambitous	09876543	606 Fano St	2020-04-29 00:18:27.339199+00
 \.
 
 
@@ -278,12 +280,14 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-3	Stickers	1099	/images/stickers.png	Make your mark	Stick it anywhere and create a movement. Printed on a smooth matte vinyl
 4	Ambitious Shorts	2799	/images/shorts.png	Basketball Shorts	Rep it in the gym or outdoors. These are specifically made for comfort and durability.
+3	Snapback	2899	/images/hat.png	Snapback	Yupoong Premium Classic Snapback Hat
 6	Destroy Tanks	2099	/images/tanks.png	The everyday tank	Make a statement with these cotton soft yet thick material tanks
 5	Mystery Box	5999	/images/mystery.png	?????	Comes with 5 random colored t-shirts and stickers
 1	OG T	2299	/images/OGshirt.png	The shirt that says it all	The first shirt that made us known. The shirt that says it all. Soft quality that will leave you satisfied and inspire not only yourself but those around you as well.
 2	Street Approved T	2299	/images/streetapproved.png	Making an impact	Style that can fit under any circumstances. Live and breathe it. Show the world how to think. Soft quality that will leave you satisfied and inspire not only yourself but those around you.
+8	Stickers	1099	/images/stickers.png	Make your mark	Stick it anywhere and create a movement. Printed on a smooth matte vinyl
+9	Sticker 2	1099	/images/sticker2.png	Smooth matte vinyl sticker	Stick it anywhere and create a movement.
 \.
 
 
@@ -291,28 +295,28 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 29, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 22, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 8, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 48, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 6, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 29, true);
 
 
 --
 -- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."products_productId_seq"', 1, false);
+SELECT pg_catalog.setval('public."products_productId_seq"', 1, true);
 
 
 --

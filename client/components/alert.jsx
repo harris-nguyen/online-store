@@ -9,8 +9,7 @@ export default class Alert extends React.Component {
           type="submit"
           className="btn btn-success"
           onClick={() => this.props.setView('checkout', {})}
-        >
-          Cart
+        >Cart
         </button>
       </div>
     );
